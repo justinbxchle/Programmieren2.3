@@ -23,7 +23,7 @@ public class MagicSquare {
         return magicNumber;
     }
 
-    //Method to sum
+    //Method to sum the Square
     static int[] sum(int[][] square) {
         int tmpVertical = 0;
         int tmpHorizontal = 0;
@@ -33,27 +33,26 @@ public class MagicSquare {
         int[] sum = new int [(2 * l) + 2];
         for (int i = 0; i < l; i++){
             for (int j = 0; j < l; j++) {
+                //sum vertical lines
                 tmpVertical = tmpVertical + square[i][j];
+                //sum horizontal lines
                 tmpHorizontal = tmpHorizontal + square[j][i];
             }
             sum[i] = tmpVertical;
             sum[l + i] = tmpHorizontal;
-            System.out.println(sum[i]);
-            System.out.println(sum[l + i]);
             tmpVertical = 0;
             tmpHorizontal = 0;
+            //sum diagonals
             diagonal1 = diagonal1 + square[i][i];
             diagonal2 = diagonal2 + square[i][l - i - 1];
 
         }
         sum[2 * l] = diagonal1;
         sum[(2 * l) + 1] = diagonal2;
-        System.out.println(sum[2 * l]);
-        System.out.println(sum[2 * l + 1]);
         return sum;
     }
 
-
+    //Check if Square is a Magic Square
     static boolean isMagicSquare(String numbers) {
         int[][] square = toSquare(numbers);
         int n = square[0].length;
@@ -68,6 +67,7 @@ public class MagicSquare {
         return magicSquare;
     }
 
+    //Check if Square is a Semimagic Square
     static boolean isSemimagicSquare(String numbers) {
         int[][] square = toSquare(numbers);
         int n = square[0].length;
@@ -82,9 +82,7 @@ public class MagicSquare {
         return semiSquare;
     }
 
-
-
-
+    //Complement the Square to a Magic Square
     static int[][] complement(String square) {
         //Extract the numbers
         int[][] numbersA = toSquare(square);
@@ -100,6 +98,7 @@ public class MagicSquare {
         return numbersA;
     }
 
+    //Method to convert a String Square to an Array Square
     static int[][] toSquare(String square) {
         String numbersOnly = square.replaceAll("[^0-9]", "");
         char[] chars = numbersOnly.toCharArray();
@@ -116,6 +115,7 @@ public class MagicSquare {
         return numbers;
     }
 
+    //Method to convert a Array Square to an String Square
     static String toString(int[][] square) {
         int l = square[0].length;
         String squareString = "";
