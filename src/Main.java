@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        String operation = "complement";
-        String parameter = "<4-9-2><3-5-7><8-1-6>";
+        String operation = args[0];
+        String parameter = args[1];
 
         //System.out.println(MagicSquare.toString(MagicSquare.toSquare(parameter)));
 
