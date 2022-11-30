@@ -2,6 +2,7 @@ public class MagicSquare {
     public MagicSquare(int[][] square) {
     }
 
+    //Gernerating the Magic Number for a k-Square
     static int magicNumber(int k) {
         int magicNumber;
         double tmp;
@@ -9,6 +10,8 @@ public class MagicSquare {
         magicNumber = (int) ((tmp + k) / 2.0);
         return magicNumber;
     }
+
+    //Output of Magic Numbers from 0 to k
     static String showMagicNumbers(int k) {
         String magicNumber = "";
         for (int i = 1; i <= k; i++) {
@@ -20,23 +23,33 @@ public class MagicSquare {
         return magicNumber;
     }
 
+    //Method to sum
     static int[] sum(int[][] square) {
-        int tmp = 0;
+        int tmpVertical = 0;
+        int tmpHorizontal = 0;
         int diagonal1 = 0;
         int diagonal2 = 0;
         int l = square[0].length;
-        int[] sum = new int [l+2];
+        int[] sum = new int [(2 * l) + 2];
         for (int i = 0; i < l; i++){
             for (int j = 0; j < l; j++) {
-                tmp = tmp + square[i][j];
+                tmpVertical = tmpVertical + square[i][j];
+                tmpHorizontal = tmpHorizontal + square[j][i];
             }
-            sum[i] = tmp;
-            tmp = 0;
+            sum[i] = tmpVertical;
+            sum[l + i] = tmpHorizontal;
+            System.out.println(sum[i]);
+            System.out.println(sum[l + i]);
+            tmpVertical = 0;
+            tmpHorizontal = 0;
             diagonal1 = diagonal1 + square[i][i];
-            diagonal2 = diagonal2 + square[i][l-i-1];
+            diagonal2 = diagonal2 + square[i][l - i - 1];
+
         }
-        sum[l] = diagonal1;
-        sum[l+1] = diagonal2;
+        sum[2 * l] = diagonal1;
+        sum[(2 * l) + 1] = diagonal2;
+        System.out.println(sum[2 * l]);
+        System.out.println(sum[2 * l + 1]);
         return sum;
     }
 
@@ -47,8 +60,8 @@ public class MagicSquare {
         boolean magicSquare = true;
         int[] sum = sum(square);
         int l = sum.length;
-        for (int i = 0; i < l-1; i++) {
-            if (sum[i] != sum[i+1] || sum[0] != magicNumber(n)) {
+        for (int i = 0; i < l - 1; i++) {
+            if (sum[i] != sum[i + 1] || sum[0] != magicNumber(n)) {
                 magicSquare = false;
             }
         }
@@ -61,8 +74,8 @@ public class MagicSquare {
         int[] sum = sum(square);
         boolean semiSquare = true;
         int l = sum.length;
-        for (int i = 0; i < l-3; i++) {
-            if (sum[i] != sum[i+1] || (sum[i+2] == sum[i+3] && sum[i+2] == magicNumber(n))) {
+        for (int i = 0; i < (l - 3); i++) {
+            if (sum[i] != sum[i + 1] || (sum[l - 2] == sum[l - 1] && sum[l - 2] == magicNumber(n))) {
                 semiSquare = false;
             }
         }
