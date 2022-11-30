@@ -108,7 +108,10 @@ public class MagicSquare {
         String squareString = "";
         for (int i = 0; i < l; i++) {
             for (int j = 0; j < l; j++) {
-                squareString = squareString + square[i][j] + " ";
+                squareString = squareString + square[i][j];
+                if (j < l-1) {
+                    squareString = squareString + " ";
+                }
             }
             squareString = squareString + "\n";
         }
