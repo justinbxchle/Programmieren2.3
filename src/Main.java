@@ -11,7 +11,7 @@ public class Main {
             case "complement":
                 System.out.println(MagicSquare.toString(MagicSquare.complement(parameter)));
                 break;
-            case "isMagicSquare":
+            case "isMagicSquare?":
                 if (MagicSquare.isMagicSquare(parameter)) {
                     System.out.println("magic square");
                 } else {
