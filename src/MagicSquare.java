@@ -113,7 +113,9 @@ public class MagicSquare {
                     squareString = squareString + " ";
                 }
             }
-            squareString = squareString + "\n";
+            if (i < l-1) {
+                squareString = squareString + "\n";
+            }
         }
         return squareString;
     }
